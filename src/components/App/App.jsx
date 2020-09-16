@@ -5,16 +5,12 @@ import {
   Redirect,
   Route,
 } from 'react-router-dom'
-import { ApolloClient,  ApolloProvider, InMemoryCache } from '@apollo/client'
+import { ApolloProvider } from 'react-apollo'
 import HomeView from '../Home/HomeView'
 import PostDetailView from '../PostDetail/PostDetailView'
 import PostForm from '../PostDetail/PostForm'
+import client from '../../Apollo/config';
 import './App.css'
-
-const client = new ApolloClient({
-  uri: 'https://graphqlzero.almansi.me/api',
-  cache: new InMemoryCache()
-})
 
 const App = () => (
   <ApolloProvider client={client}>

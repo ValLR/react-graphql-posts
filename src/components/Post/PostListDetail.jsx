@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
-import PostListDetailDelete from './PostListDetailDelete'
+import { Mutation } from 'react-apollo'
+import { ELIMINATE_POST } from '../../Apollo/Mutations/PostListMutations'
 
 class PostListDetail extends Component {
   render() {
@@ -19,7 +20,28 @@ class PostListDetail extends Component {
         <Link exact to={`/edit/${post.id}`} className="link detail edit">
           Edit post
         </Link>
-        <PostListDetailDelete id={post.id} />
+        <Mutation mutation={ELIMINATE_POST}>
+          {(deletePost, {loading, error, data}) => {
+            return (
+              <div>
+              <button
+                disabled={loading}
+                onClick={e => {
+                  e.preventDefault()
+                  deletePost({
+                    variables: {
+                      id: post.id
+                    }
+                  })
+                }}
+              >
+                Delete post
+              </button>
+              {error && <p>{error.message}</p>}
+            </div>
+            )
+          }}
+        </Mutation>
       </div>
     )
   }

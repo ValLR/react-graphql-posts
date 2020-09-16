@@ -1,62 +1,77 @@
-import React from 'react'
-import { gql, useMutation } from '@apollo/client'
+import React, { Component } from 'react'
+import { Redirect } from 'react-router-dom'
+import { Mutation } from 'react-apollo'
+import { CREATE_POST } from '../../Apollo/Mutations/PostListMutations'
 
+class PostCreateForm extends Component {
+  constructor() {
+    super()
 
-const CREATE_POST = gql`
-mutation (
-  $input: CreatePostInput!
-) {
-  createPost(input: $input) {
-    id
-    title
-    body
-  }
-}
-`
+    this.state = {
+      title: '',
+      body: '',
+    }
 
-function PostCreateForm() {
-  const [title, setTitle] = React.useState('');
-  const [body, setBody] = React.useState('');
-  const [createPost, { loading, error }] = useMutation(CREATE_POST);
-
-  function handleCreatePost(event) {
-    event.preventDefault();
-    createPost({
-      variables: {
-        'input': { title, body }
-      }
-    });
+    this.handleChange = this.handleChange.bind(this)
   }
 
-  return (
-    <div>
-      <h2>New Post</h2>
-      <form onSubmit={handleCreatePost}>
-        <div>
-          <input 
-             placeholder="Title"
-             type="text"
-             name="title"
-             onChange={(event) => setTitle(event.target.value)}
-           />
-        </div>
-        <div>
-          <textarea
-            placeholder="Write down your post here"
-            name="body"
-            id="body"
-            cols="30"
-            rows="10"
-            onChange={(event) => setBody(event.target.value)}
-          />
-        </div>
-        <button disabled={loading} type="submit">
-          Submit
-        </button>
-        {error && <p>{error.message}</p>}
-      </form>
-    </div>
-  );
+  handleChange(e) {
+    e.preventDefault()
+    const { name, value } = e.target
+    this.setState({
+      [name]: value
+    })
+  }
+
+  render() {
+    const { title, body } = this.state
+    return(
+      <Mutation mutation={CREATE_POST}>
+        {(createPost, {loading, error, data}) => (
+          data ? <Redirect from="*" to={'/'} /> : (
+            <form
+              onSubmit={e => {
+                e.preventDefault()
+                createPost({
+                  variables: {
+                    'input': { 
+                      title,
+                      body
+                    }
+                  }
+                })
+              }}
+            >
+            <div>
+              <input 
+                placeholder="Title"
+                type="text"
+                name="title"
+                onChange={this.handleChange}
+                value={title}
+              />
+            </div>
+            <div>
+              <textarea
+                placeholder="Write down your post here"
+                name="body"
+                id="body"
+                cols="30"
+                rows="10"
+                onChange={this.handleChange}
+                value={body}
+              />
+            </div>
+            <button disabled={loading} type="submit">
+              Submit
+            </button>
+            {error && <p>{error.message}</p>}
+            </form>
+          )
+        )}
+      </Mutation>
+    )
+  }
 }
 
 export default PostCreateForm
