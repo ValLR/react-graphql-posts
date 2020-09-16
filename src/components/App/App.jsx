@@ -5,10 +5,10 @@ import {
   Redirect,
   Route,
 } from 'react-router-dom'
-import { ApolloProvider } from '@apollo/client'
-import { ApolloClient, InMemoryCache } from '@apollo/client'
+import { ApolloClient,  ApolloProvider, InMemoryCache } from '@apollo/client'
 import HomeView from '../Home/HomeView'
 import PostDetailView from '../PostDetail/PostDetailView'
+import PostForm from '../PostDetail/PostForm'
 import './App.css'
 
 const client = new ApolloClient({
@@ -16,13 +16,13 @@ const client = new ApolloClient({
   cache: new InMemoryCache()
 })
 
-
 const App = () => (
   <ApolloProvider client={client}>
     <BrowserRouter>
       <Switch>
         <Route exact path={'/'} component={HomeView} />
-        <Route path={'/post/:id'} render={props => <PostDetailView {...props} />} />
+        <Route path={'/new'} render={props => <PostForm {...props} />} />
+        <Route path={'/post/:id'} render={props => <PostDetailView mode="view" {...props} />} />
         <Redirect from="*" to={'/'} />
       </Switch>
     </BrowserRouter>

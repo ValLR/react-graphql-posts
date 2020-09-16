@@ -4,7 +4,6 @@ import PostDetail from '../PostDetail/PostDetail'
 import LoadingView from '../Components/LoadingView'
 import ErrorView from '../Components/ErrorView'
 
-
 const GET_POST = gql`
 query (
   $id: ID!
@@ -20,7 +19,7 @@ query (
 }
 `
 
-const PostDetailConnect = ({ id }) => {
+export const PostDetailConnect = ({ id }) => {
   const { loading, error, data } = useQuery(GET_POST, { 
     variables: {
       "id": id
@@ -32,5 +31,3 @@ const PostDetailConnect = ({ id }) => {
 
   return <PostDetail post={data.post} /> 
 }
-
-export default PostDetailConnect
