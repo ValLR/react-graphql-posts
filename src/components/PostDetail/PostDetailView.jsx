@@ -5,10 +5,14 @@ import { GET_POST } from '../../Apollo/Queries/PostQueries'
 import ErrorView from '../Components/ErrorView'
 import LoadingView from '../Components/LoadingView'
 import PostDetail from '../PostDetail/PostDetail'
+import PostCreateForm from './PostCreateForm'
 
 class PostDetailView extends Component {
   render() {
     const { id } = this.props.match.params
+    const { mode } = this.props
+
+    console.log(mode)
     return(
       <div id="post-detail">
         <Link exact to={'/'} className="link button">
@@ -19,7 +23,11 @@ class PostDetailView extends Component {
             if (loading) return <LoadingView />
             if (error) return <ErrorView message={error.message} />
             
-            return <PostDetail post={data.post} /> 
+            return (
+              (mode === 'edit')
+              ? <PostCreateForm post={data.post}  /> 
+              : <PostDetail post={data.post} />
+            )
           }}
         </Query>
       </div>

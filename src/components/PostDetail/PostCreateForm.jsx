@@ -15,6 +15,15 @@ class PostCreateForm extends Component {
     this.handleChange = this.handleChange.bind(this)
   }
 
+  componentDidMount() {
+    const { post } = this.props
+    
+    this.setState({
+      title: post.title ?? '',
+      body: post.body ?? ''
+    })
+  }
+
   handleChange(e) {
     e.preventDefault()
     const { name, value } = e.target
@@ -25,7 +34,7 @@ class PostCreateForm extends Component {
 
   render() {
     const { title, body } = this.state
-    return(
+    return (
       <Mutation mutation={CREATE_POST}>
         {(createPost, {loading, error, data}) => (
           data ? <Redirect from="*" to={'/'} /> : (

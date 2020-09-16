@@ -19,6 +19,7 @@ const App = () => (
         <Route exact path={'/'} component={HomeView} />
         <Route path={'/new'} render={props => <PostForm {...props} />} />
         <Route path={'/post/:id'} render={props => <PostDetailView mode="view" {...props} />} />
+        <Route path={'/edit/:id'} render={props => <PostDetailView mode="edit" {...props} />} />
         <Redirect from="*" to={'/'} />
       </Switch>
     </BrowserRouter>
