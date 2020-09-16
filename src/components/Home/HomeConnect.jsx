@@ -31,7 +31,9 @@ query (
 `
 
 const HomeConnect = () => {
-  const { loading, error, data } = useQuery(GET_POSTS, { variables: pageQueryOptions})
+  const { loading, error, data } = useQuery(GET_POSTS, { 
+    variables: pageQueryOptions
+  })
   
   if (loading) return <LoadingView />
   if (error) return <ErrorView />

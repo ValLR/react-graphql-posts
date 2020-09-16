@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import HomeConnect from './HomeConnect'
 
+
 class HomeView extends Component {
   render() {
     return(

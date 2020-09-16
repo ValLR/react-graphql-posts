@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
 
 class PostListDetail extends Component {
   render() {
@@ -11,6 +12,9 @@ class PostListDetail extends Component {
         <p className="body">
           {post.body}
         </p>
+        <Link exact to={`/post/${post.id}`} className="link detail">
+          Go to post
+        </Link>
       </div>
     )
   }
