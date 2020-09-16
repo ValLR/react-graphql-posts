@@ -1,29 +1,17 @@
 import React from 'react'
-import ApolloClient from 'apollo-boost'
-import { ApolloProvider } from 'react-apollo';
+import { ApolloProvider } from '@apollo/client';
+import { ApolloClient, InMemoryCache } from '@apollo/client'
+import HomeView from '../Home/HomeView'
 import './App.css'
 
 const client = new ApolloClient({
-  uri: 'https://graphqlzero.almansi.me/api'
+  uri: 'https://graphqlzero.almansi.me/api',
+  cache: new InMemoryCache()
 })
 
 const App = () => (
   <ApolloProvider client={client}>
-    <div className="App">
-      <header className="App-header">
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <HomeView />
   </ApolloProvider>
 )
 
