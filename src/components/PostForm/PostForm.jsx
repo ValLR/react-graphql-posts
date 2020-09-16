@@ -9,7 +9,7 @@ class PostForm extends Component {
       <div>
         <h1>Create a new post</h1>
         <PostCreateForm />
-        <Link exact to={`/`} className="link button">
+        <Link exact to={'/'} className="link button">
           Cancel
         </Link>
       </div>

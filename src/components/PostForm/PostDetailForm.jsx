@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 
 
-class PostDetail extends Component {
+class PostDetailForm extends Component {
   render() {
     const { post } = this.props
     return(
@@ -20,4 +20,4 @@ class PostDetail extends Component {
   }
 }
 
-export default PostDetail
+export default PostDetailForm

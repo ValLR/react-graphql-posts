@@ -4,10 +4,10 @@ import { Query } from 'react-apollo'
 import { GET_POST } from '../../Apollo/Queries/PostQueries'
 import ErrorView from '../Components/ErrorView'
 import LoadingView from '../Components/LoadingView'
-import PostDetail from '../PostDetail/PostDetail'
+import PostDetail from './PostDetailForm'
 import PostCreateForm from './PostCreateForm'
 
-class PostDetailView extends Component {
+class PostEdit extends Component {
   render() {
     const { id } = this.props.match.params
     const { mode } = this.props
@@ -35,4 +35,4 @@ class PostDetailView extends Component {
   }
 }
 
-export default PostDetailView
+export default PostEdit

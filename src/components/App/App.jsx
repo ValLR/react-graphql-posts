@@ -7,8 +7,8 @@ import {
 } from 'react-router-dom'
 import { ApolloProvider } from 'react-apollo'
 import HomeView from '../Home/HomeView'
-import PostDetailView from '../PostDetail/PostDetailView'
-import PostForm from '../PostDetail/PostForm'
+import PostEdit from '../PostForm/PostEdit'
+import PostForm from '../PostForm/PostForm'
 import client from '../../Apollo/config';
 import './App.css'
 
@@ -18,8 +18,8 @@ const App = () => (
       <Switch>
         <Route exact path={'/'} component={HomeView} />
         <Route path={'/new'} render={props => <PostForm {...props} />} />
-        <Route path={'/post/:id'} render={props => <PostDetailView mode="view" {...props} />} />
-        <Route path={'/edit/:id'} render={props => <PostDetailView mode="edit" {...props} />} />
+        <Route path={'/post/:id'} render={props => <PostEdit mode="view" {...props} />} />
+        <Route path={'/edit/:id'} render={props => <PostEdit mode="edit" {...props} />} />
         <Redirect from="*" to={'/'} />
       </Switch>
     </BrowserRouter>

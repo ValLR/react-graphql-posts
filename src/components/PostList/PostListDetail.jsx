@@ -5,7 +5,7 @@ import { ELIMINATE_POST } from '../../Apollo/Mutations/PostListMutations'
 
 class PostListDetail extends Component {
   render() {
-    const { post } = this.props
+    const { handleDelete, post } = this.props
     return (
       <div className="post-list detail" key={post.id}>
         <p className="title">
@@ -28,6 +28,7 @@ class PostListDetail extends Component {
                 disabled={loading}
                 onClick={e => {
                   e.preventDefault()
+                  handleDelete()
                   deletePost({
                     variables: {
                       id: post.id

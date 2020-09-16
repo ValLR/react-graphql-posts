@@ -3,10 +3,16 @@ import PostListDetail from './PostListDetail'
 
 class PostList extends Component {
   render() {
-    const { postList } = this.props;
+    const { handleDelete, postList } = this.props;
     return(
       <div id="post-list">
-        {postList.map(post => <PostListDetail key={post.id} post={post} />)}
+        {postList.map(post => (
+          <PostListDetail
+            handleDelete={handleDelete}
+            key={post.id}
+            post={post}
+          />)
+        )}
       </div>
     )
   }
