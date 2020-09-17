@@ -1,0 +1,30 @@
+.postlist {
+  &__item {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    margin: 5%;
+    border: 1px solid grey;
+    border-radius: 10px;
+    padding: 30px;
+  }
+
+  &__button-row {
+    display: flex;
+    justify-content: inherit;
+    margin-top: 10px;
+  }
+
+  &__link {
+    background: whitesmoke;
+    border: none;
+    color: inherit;
+    padding: 5px 10px;
+    font-size: 16px;
+  }
+
+  &__link:hover {
+    border: 1px solid black;
+    background: none;
+  }
+}

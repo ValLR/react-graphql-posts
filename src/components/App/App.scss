@@ -1,0 +1,27 @@
+html, body, #root {
+  height: 100%;
+}
+
+button {
+  cursor: pointer;
+}
+
+a, button {
+  padding: 5px;
+  text-decoration: none;
+  border: none;
+  color: inherit;
+  padding: 5px;
+  font-size: 16px;
+}
+
+button {
+  overflow: visible;
+  width: auto;
+  font-family: "Verdana" sans-serif;
+}
+
+.center {
+  text-align: center;
+  margin: 5%;
+}

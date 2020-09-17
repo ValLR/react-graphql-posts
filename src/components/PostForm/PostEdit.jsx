@@ -12,12 +12,14 @@ class PostEdit extends Component {
     const { id } = this.props.match.params
     const { mode } = this.props
 
-    console.log(mode)
     return(
-      <div id="post-detail">
-        <Link exact to={'/'} className="link button">
-          Go back
-        </Link>
+      <div className="post-form">
+        <div className="post-form__text">
+          {mode === 'edit' && <h1>Edit Post</h1>}
+          <Link exact to={'/'} className="post-form__link post-form__link--cancel">
+            Go back
+          </Link>
+        </div>
         <Query query={GET_POST}  variables={{ id }}>
           {({ loading, error, data }) => {
             if (loading) return <LoadingView />

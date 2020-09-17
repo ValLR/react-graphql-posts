@@ -19,8 +19,8 @@ class PostCreateForm extends Component {
     const { post } = this.props
     
     this.setState({
-      title: post.title ?? '',
-      body: post.body ?? ''
+      title: post ? post.title : '',
+      body: post ? post.body : ''
     })
   }
 
@@ -39,6 +39,7 @@ class PostCreateForm extends Component {
         {(createPost, {loading, error, data}) => (
           data ? <Redirect from="*" to={'/'} /> : (
             <form
+              className="post-form__form"
               onSubmit={e => {
                 e.preventDefault()
                 createPost({
@@ -71,7 +72,7 @@ class PostCreateForm extends Component {
                 value={body}
               />
             </div>
-            <button disabled={loading} type="submit">
+            <button disabled={loading} type="submit" className="post-form__link post-form__link--submit">
               Submit
             </button>
             {error && <p>{error.message}</p>}

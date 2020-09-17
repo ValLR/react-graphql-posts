@@ -1,0 +1,22 @@
+.home {
+  &__text {
+    text-align: center;
+  }
+
+  &__button {
+    border: 1px solid grey;
+    border-radius: 10px;
+    padding: 10px;
+  }
+
+  &__button:hover {
+    background: whitesmoke;
+  }
+
+  &__pagination {
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+    margin: 2% 5%;
+  }
+}

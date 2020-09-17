@@ -10,7 +10,7 @@ import HomeView from '../Home/HomeView'
 import PostEdit from '../PostForm/PostEdit'
 import PostForm from '../PostForm/PostForm'
 import client from '../../Apollo/config';
-import './App.css'
+import './App.scss'
 
 const App = () => (
   <ApolloProvider client={client}>

@@ -1,5 +1,5 @@
 import React from 'react'
 
-const ErrorView = ({ message }) => <div>{message}</div>
+const ErrorView = ({ message }) => <div className="center">{message}</div>
 
 export default ErrorView
